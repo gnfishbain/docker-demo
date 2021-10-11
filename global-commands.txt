@@ -1,0 +1,4 @@
+docker stop <container-name>
+docker rm <container-name>
+docker images prune
+docker container prune
