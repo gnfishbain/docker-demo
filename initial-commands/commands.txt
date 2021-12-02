@@ -1,6 +1,9 @@
 # Run latest ubuntu and open bash terminal:
 docker pull ubuntu:latest
-docker run -it -v /tmp/my_dir:/external ubuntu:latest bash
+docker run -it ubuntu:21.10 bash
+
+docker run ubuntu:21.10 cat /etc/os-release
+docker run ubuntu:21.10 sh -c "apt update -y && apt install python3.10 -y && python3.10 --version" && touch /external/x.txt
 
 docker run python:3 python -c 'import sys; print(sys.version)'
 

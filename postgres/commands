@@ -23,5 +23,5 @@ docker top <container id>
 
 =====Create network=============
 docker network create -d bridge postgres-my-bridge-network
-docker run -d --name dev-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=Pass2020! -v /tmp/postgres-data/:/var/lib/postgresql/data --network postgres-my-bridge-network -p 5433:5432 postgres
+docker run -d --name dev-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=Pass2020! -v /tmp/postgres-data/:/var/lib/postgresql/data --hostname dev-postgres --network postgres-my-bridge-network -p 5433:5432 postgres
 docker run -p 8085:80 -e 'PGADMIN_DEFAULT_EMAIL=user@domain.local' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' --network postgres-my-bridge-network --name dev-pgadmin -d dpage/pgadmin4
