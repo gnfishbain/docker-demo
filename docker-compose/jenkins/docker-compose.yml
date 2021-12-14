@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   master:
-    image: eeacms/jenkins-master
+    image: moditamam/jenkins-master
     deploy:
       resources:
         limits:
@@ -18,7 +18,7 @@ services:
     - jenkins-master:/var/jenkins_home
 
   worker:
-    image: eeacms/jenkins-slave
+    image: moditamam/jenkins-agent
     environment:
       JAVA_OPTS: "-Xmx2048m"
       JENKINS_MASTER: "http://master:8080"
@@ -26,6 +26,7 @@ services:
       JENKINS_USER: "admin"
       JENKINS_PASS: "1234"
       JENKINS_RETRY: "10"
+      JENKINS_LABELS: "agent_1"
     volumes:
     - jenkins-worker:/var/jenkins_home/worker
 
