@@ -21,7 +21,7 @@ services:
       JENKINS_LABELS: "agent_1"
     volumes:
     - jenkins-worker:/var/jenkins_home/worker
-#    - /home/modi/dev/:/external
+#    - $HOME:/external
 
 volumes:
   jenkins-master:
