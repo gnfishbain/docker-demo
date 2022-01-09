@@ -1,7 +1,11 @@
 version: "3.3"
 services:
   master:
+    build: ./master
     image: moditamam/jenkins-master
+    networks:
+      - bridge
+    privileged: true
     ports:
     - "80:8080"
     environment:
@@ -10,7 +14,11 @@ services:
     - jenkins-master:/var/jenkins_home
 
   worker:
-    image: moditamam/jenkins-agent
+    image: moditamam/jenkins-agent:docker-inside
+    networks:
+      - bridge
+    build: ./agent
+    privileged: true
     environment:
       JAVA_OPTS: "-Xmx2048m"
       JENKINS_MASTER: "http://master:8080"
@@ -21,8 +29,11 @@ services:
       JENKINS_LABELS: "agent_1"
     volumes:
     - jenkins-worker:/var/jenkins_home/worker
-#    - $HOME:/external
+    - /var/run/docker.sock:/var/run/docker.sock
+    - $HOME:/external
 
 volumes:
   jenkins-master:
   jenkins-worker:
+networks:
+  bridge:

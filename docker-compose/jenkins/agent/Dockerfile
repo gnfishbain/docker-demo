@@ -1,10 +1,10 @@
-FROM eeacms/jenkins-slave
+FROM eeacms/jenkins-slave-dind
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y
 RUN apt-get install -y python3 python3-pip
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 10
-RUN apt-get install -y fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 10
+RUN apt-get install -y fonts-liberation libasound2 libatk-bridge2.0-0
 RUN apt-get install -y libnspr4 libnss3 lsb-release xdg-utils libxss1 libdbus-glib-1-2
 RUN apt-get install -y curl unzip wget xvfb
 
